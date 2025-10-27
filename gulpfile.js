@@ -12,8 +12,8 @@ const webpackConfig = require("./webpack.config.js");
 
 const paths = {
   scripts: {
-    src: "src/ts/index.ts",
-    watch: "src/ts/**/*.ts",
+    src: "src/ts/index.tsx",
+    watch: "src/ts/**/*.{ts,tsx}",
   },
   styles: {
     src: "src/scss/main.scss",
@@ -37,13 +37,16 @@ function server() {
     server: {
       baseDir: "./dist",
     },
+    port: 3000,
+    open: true,
+    notify: false,
   });
 }
 
 function styles() {
   return src(paths.styles.src)
     .pipe(sourcemaps.init())
-    .pipe(sass())
+    .pipe(sass().on("error", sass.logError))
     .pipe(
       autoprefixer({
         cascade: false,
@@ -55,9 +58,19 @@ function styles() {
 }
 
 function scripts() {
-  return new Promise((resolve) =>
+  return new Promise((resolve, reject) =>
     webpack(webpackConfig(paths), (err, stats) => {
-      if (err) console.log("Webpack", err);
+      if (err) {
+        console.log("Webpack Error:", err);
+        reject(err);
+        return;
+      }
+
+      if (stats.hasErrors()) {
+        console.log("Webpack Stats Errors:", stats.toJson().errors);
+        reject(new Error("Webpack compilation errors"));
+        return;
+      }
 
       console.log(
         stats.toString({
@@ -79,30 +92,45 @@ function scripts() {
 }
 
 function html() {
-  return src(paths.html.src).pipe(browserSync.stream()).pipe(dest(paths.dest));
+  return src(paths.html.src).pipe(dest(paths.dest)).pipe(browserSync.stream());
 }
 
+// ✅ FUNÇÃO DE IMAGENS SIMPLES - SEMPRE FUNCIONA
 function img() {
-  return src(paths.img.src).pipe(dest(paths.dest + "/img"));
+  console.log("📸 Copying images to dist/img...");
+  return src(paths.img.src)
+    .pipe(dest(paths.dest + "/img"))
+    .pipe(browserSync.stream());
+}
+
+function watchFiles() {
+  watch(paths.scripts.watch, { ignoreInitial: false }, series(scripts))
+    .on("change", (path) => {
+      console.log(`File ${path} was changed`);
+      browserSync.reload();
+    })
+    .on("error", (err) => {
+      console.error("Watch error:", err);
+    });
+
+  watch(paths.styles.src, { ignoreInitial: false }, styles);
+  watch(paths.img.src, { ignoreInitial: false }, img);
+  watch(paths.html.src, { ignoreInitial: false }, series(html)).on(
+    "change",
+    browserSync.reload
+  );
 }
 
 const build = series(clean, parallel(styles, scripts, html, img));
-const dev = () => {
-  watch(paths.scripts.watch, { ignoreInitial: false }, scripts).on(
-    "change",
-    browserSync.reload
-  );
-  watch(paths.styles.src, { ignoreInitial: false }, styles);
-  watch(paths.img.src, { ignoreInitial: false }, img);
-  watch(paths.html.src, { ignoreInitial: false }, html).on(
-    "change",
-    browserSync.reload
-  );
-  server();
-};
+
+const dev = series(build, parallel(watchFiles, server));
 
 exports.build = build;
 exports.server = server;
 exports.styles = styles;
 exports.scripts = scripts;
+exports.html = html;
+exports.img = img;
+exports.clean = clean;
+exports.watch = watchFiles;
 exports.default = dev;

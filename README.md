@@ -1,76 +1,94 @@
-# Venha ser um desenvolvedor da Cadastra
+# 🛍️ E-commerce Cadastra - Desafio Frontend
 
-Olá! Somos a Cadastra, uma Next-Gen Company que oferece soluções globais em marketing, tecnologia, estratégia de negócios, commerce, dados e analytics. Este desafio é voltado para o nosso Centro de Excelência (COE) de Commerce, especializado em implantação, migração, evolução e otimização de e-commerce.  Contamos com escritórios em 5 países, mas num formato de trabalho 100% home office.
+Este projeto foi desenvolvido como parte do processo seletivo da **Cadastra**. É um e-commerce responsivo com funcionalidades completas de filtros, carrinho de compras e carregamento dinâmico de produtos.
 
-Estamos em busca de Pessoas Desenvolvedoras `Front-end`, com sólidos conhecimentos em HTML, CSS e TS para projetar interfaces e entregar a melhor experiência para os consumidores visando sempre a otimização do código e agilidade no desenvolvimento.
+## 📋 Sumário
 
-## O que procuramos
+- [Sobre o Projeto](#-sobre-o-projeto)
+- [Funcionalidades](#-funcionalidades)
+- [Tecnologias Utilizadas](#-tecnologias-utilizadas)
+- [Pré-requisitos](#-pré-requisitos)
+- [Como Fazer o Projeto Rodar](#-como-fazer-o-projeto-rodar)
+- [Como Utilizar o Sistema](#-como-utilizar-o-sistema)
+- [Estrutura do Projeto](#-estrutura-do-projeto)
+- [Responsividade](#-responsividade)
+- [Considerações](#-considerações)
+- [Contato](#-contato)
 
-### Requisitos Obrigatórios
+## 💡 Sobre o Projeto
 
-- Html5, css3;
-- Javascript/Typescript;
-- Consumo de APIs.
-- Versionamento Git;
-- Grunt/gulp;
-- Sass/less;
-- Nodejs
-- Sites responsivos;
-- Iniciativa, criatividade e colaboração;
-- Boas práticas: reutilização de código, semântica, organização, performance.
+Este e-commerce foi desenvolvido seguindo fielmente o design do Figma fornecido, implementando todas as funcionalidades solicitadas com foco em **performance**, **usabilidade** e **código limpo**.
 
-### Desejáveis:
+## ✨ Funcionalidades
 
-- Experiência com algum CMS
-- Conhecimento/Experiência em Vtex
-- Nodejs
+### Obrigatórias 
+- ✅ **HTML5 e CSS3** - Estrutura semântica e estilização moderna
+- ✅ **TypeScript** - Tipagem estática para maior robustez
+- ✅ **Requisição à API** - Consumo da API de produtos via fetch
+- ✅ **Filtros Avançados** - Filtrar por cor, tamanho e preço
+- ✅ **Carrinho de Compras** - Adicionar, remover e gerenciar produtos
+- ✅ **Load More** - Carregamento progressivo de produtos
+- ✅ **Responsividade** - Layout adaptativo para mobile e desktop
+- ✅ **CSS Puro** - Sem frameworks como Bootstrap ou Foundation
 
-----
+## 💻 Tecnologias Utilizadas
 
-## Como se candidatar a vaga
+- **Frontend**: HTML5, CSS3/SASS, TypeScript, React
+- **Build Tools**: Gulp, Webpack
+- **API**: JSON Server
+- **Gerenciamento**: npm
+- **Versionamento**: Git
 
-- [Crie um fork desse projeto;](https://github.com/Cadastra-Next-Gen-Company/desenvolvedor-cadastra/fork)
-- No seu fork, codifique o layout seguindo as instruções abaixo;
-- Atualize o readme com as instruções necessárias para rodar o seu código;
-- Adicione também seu e-mail de contato ao readme do projeto ( caso seu e-mail do github esteja privado )
-- envie para [vinicius.delfino@cadastra.com](mailto:vinicius.delfino@cadastra.com?subject=Vaga%20DEV%20-%20Cadastra) com cópia para [andresa.klein@cadastra.com](mailto:andresa.klein?subject=Vaga%20DEV%20-%20Cadastra)
- 
+## 🚀 Pré-requisitos
 
-**obs.**: link do projeto [github.com/Cadastra-Next-Gen-Company/desenvolvedor-cadastra](https://github.com/Cadastra-Next-Gen-Company/desenvolvedor-cadastra)
+Antes de iniciar, certifique-se de ter instalado:
 
-### Instruções para o teste
+- **Node.js** versão 14 ou superior
+- **npm** (geralmente vem com o Node.js)
+- **Git** para clonar o repositório
 
-O layout se encontra no [figma](https://www.figma.com/file/Z5RCG3Ewzwm7XIPuhMUsBZ/Desafio-Cadastra?type=design&node-id=0%3A1&mode=design&t=A0G2fRjMSrcQjchw-1).
+## ▶️ Como Fazer o Projeto Rodar
 
-### Dependências
+Siga os passos abaixo para executar o projeto em sua máquina:
 
-O projeto possui um setup pronto no qual há a necessidade de possuir o nodejs instalado na versão 14 ou superior.
+### 1. Clone o Repositório
 
-Para instalar as dependências só é preciso executar o comando: `npm install`
+```bash
+git clone https://github.com/SEU_USUARIO/desenvolvedor-cadastra.git
+cd desenvolvedor-cadastra
+```
 
-O dar start no server e nos processos para desenvolvimento é necessário rodar o comando: `npm start `
+## 2. Instale as Dependências
+```bash
 
-Uma ver que o comando é dado ele irá levantar 2 servidores, sendo eles:
- - um para acessar o front-end que roda na porta 3000. No qual pode ser acessado pela url: http://localhost:3000
- - um para o json-server que irá export uma api com a lista de produtos que roda na porta 5000. Para acessar os produtos é na url:  http://localhost:5000/products
+npm install
+```
 
-### Objetivo
+## 3. Inicie o Projeto
+```bash
 
-O objetivo desse desafio é avaliar a seus conhecimentos fundamentais de front end, por isso pedimos que não utilize nenhum framework, porem caso deseje utilizar frameworks como react, é possível adicionar ao setup.
-### Obrigatório
+npm start
+```
+Este comando irá iniciar 2 servidores simultaneamente.
 
-- HTML5 e CSS3
-- Typescript
-- Requisição a API para obter os produtos
-- Funcionalidade: Filtrar produtos por cor, tamanho e preço.
-- Funcionalidade: Adicionar produto ao carrinho.
-- Funcionalidade: Carregar mais produtos.
-- Não utilizar Bootstrap, Foundation Css, Semantic ui ou semelhantes ;
-- Responsividade
+## 4. Acesse a Aplicação
+Após executar npm start, você terá acesso a:
 
-#### Bônus
+🌐 Frontend: [localhost](http://localhost:3000/)
 
-- Typescript com clean code
-- Adição de processo no gulp para otimizar imagens
+🔌 API: [localhost](http://localhost:5000/products)
 
-##### Dúvidas: [vinicius.delfino@cadastra.com](mailto:vinicius.delfino@cadastra.com?subject=Dúvida%20Vaga%20DEV%20-%20Cadastra)
+## 🎯 Como Utilizar o Sistema
+- Visualizar Produtos: Navegue pela lista de produtos carregados dinamicamente
+- Filtrar Produtos: Use os filtros de cor, tamanho e preço para refinar a busca
+- Ordenar Produtos: Organize os produtos por preço, nome ou relevância
+- Carrinho de Compras: Adicione produtos ao carrinho
+- Load More: Carregue mais produtos conforme necessário
+- Responsividade: Acesse de qualquer dispositivo (desktop, tablet, mobile)
+
+## 📞 Contato
+Gabrielly Sendeski
+📧 Email: gaby.sendeski@hotmail.com
+🔗 LinkedIn: https://www.linkedin.com/in/gabrielly-sendeski/
+
+🐙 GitHub: https://github.com/gabysendeski
